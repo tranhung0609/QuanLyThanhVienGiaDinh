@@ -51,23 +51,42 @@ public class family {
     }
 
     public void add() {
-            Human hm = human();
+        Human hm = human();
         humans.add(hm);
-      }
-      public int findByName(String name){
-        for (int i = 0; i<humans.size();i++){
-            if(humans.get(i).getName().equals(name)){
+    }
+
+    public int findByName(String name) {
+        for (int i = 0; i < humans.size(); i++) {
+            if (humans.get(i).getName().equals(name)) {
                 return i;
             }
         }
         return -1;
-      }
+    }
 
-      public void display(){
-        for (int i = 0; i<humans.size();i++){
+    public void delete() {
+        int viTri = findByName(a.nextLine());
+        if (viTri != -1) {
+            humans.remove(viTri);
+        } else {
+            System.out.println("Không có đâu bé ơiii");
+        }
+    }
+
+    public void edit() {
+        int indexOfHuman = findByName(a.nextLine());
+        if (indexOfHuman == -1) {
+            System.out.println("Không có");
+        } else {
+            humans.set(indexOfHuman, human());
+        }
+    }
+
+    public void display() {
+        for (int i = 0; i < humans.size(); i++) {
             System.out.println(humans.get(i));
         }
-      }
+    }
 
     public void menu() {
         Scanner sc = new Scanner(System.in);
@@ -86,12 +105,12 @@ public class family {
                 case 1:
                     add();
                     break;
-//                case 2:
-//                    delete();
-//                    break;
-//                case 3:
-//                    edit();
-//                    break;;
+                case 2:
+                    delete();
+                    break;
+                case 3:
+                    edit();
+                    break;
                 case 4:
                     display();
                     break;
